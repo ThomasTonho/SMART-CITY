@@ -9,6 +9,7 @@ from rest_framework.decorators import  action, permission_classes
 class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
+    filterset_class = UsuarioFilter
 
 class LocaisViewSet(viewsets.ModelViewSet):
     queryset = Locais.objects.all()
