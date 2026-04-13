@@ -46,3 +46,12 @@ class MicrocontroladoresFilter(django_filters.FilterSet):
         model = Microcontroladores
         fields = ['modelo', 'mac_address', 'latitude', 'longitude', 'status', 'ambiente']
 
+class SensoresFilter(django_filters.FilterSet):
+    tipo_sensor = django_filters.CharFilter(field_name='tipo_sensor', lookup_expr='icontains')
+    unidade_medida = django_filters.CharFilter(field_name='unidade_medida', lookup_expr='icontains')
+    mic = django_filters.CharFilter(field_name='mic__modelo', lookup_expr='icontains')
+    status = django_filters.BooleanFilter(field_name='status')
+
+    class Meta:
+        model = Sensores
+        fields = ['tipo_sensor', 'unidade_medida', 'mic', 'status']
