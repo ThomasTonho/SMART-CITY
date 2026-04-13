@@ -24,6 +24,7 @@ class ResponsaveisViewSet(viewsets.ModelViewSet):
 class AmbientesViewSet(viewsets.ModelViewSet):
     queryset = Ambientes.objects.all()
     serializer_class = AmbientesSerializer
+    filterset_class = AmbientesFilter
 
 class MicrocontroladoresViewSet(viewsets.ModelViewSet):
     queryset = Microcontroladores.objects.all()
