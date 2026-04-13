@@ -3,6 +3,8 @@ from .models import *
 from .serializers import *
 from rest_framework import viewsets
 from .filters import *
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.decorators import  action, permission_classes
 
 class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
