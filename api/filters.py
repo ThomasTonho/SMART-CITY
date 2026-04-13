@@ -17,3 +17,10 @@ class LocaisFilter(django_filters.FilterSet):
     class Meta:
         model = Locais
         fields = ['nome']
+
+class ResponsaveisFilter(django_filters.FilterSet):
+    nome = django_filters.CharFilter(field_name='nome', lookup_expr='icontains')
+
+    class Meta:
+        model = Responsaveis
+        fields = ['nome']
