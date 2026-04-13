@@ -34,6 +34,7 @@ class MicrocontroladoresViewSet(viewsets.ModelViewSet):
 class SensoresViewSet(viewsets.ModelViewSet):
     queryset = Sensores.objects.all()
     serializer_class = SensoresSerializer
+    filterset_class = SensoresFilter
 
 class HistoricosViewSet(viewsets.ModelViewSet):
     queryset = Historicos.objects.all()
