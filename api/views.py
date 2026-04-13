@@ -39,5 +39,6 @@ class SensoresViewSet(viewsets.ModelViewSet):
 class HistoricosViewSet(viewsets.ModelViewSet):
     queryset = Historicos.objects.all()
     serializer_class = HistoricosSerializer
+    filterset_class = HistoricosFilter
 
 
