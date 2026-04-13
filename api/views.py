@@ -14,6 +14,7 @@ class UsuarioViewSet(viewsets.ModelViewSet):
 class LocaisViewSet(viewsets.ModelViewSet):
     queryset = Locais.objects.all()
     serializer_class = LocaisSerializer
+    filterset_class = LocaisFilter
 
 class ResponsaveisViewSet(viewsets.ModelViewSet):
     queryset = Responsaveis.objects.all()
