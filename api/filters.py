@@ -34,3 +34,15 @@ class AmbientesFilter(django_filters.FilterSet):
         model = Ambientes
         fields = ['local', 'responsavel', 'descricao']
 
+class MicrocontroladoresFilter(django_filters.FilterSet):
+    modelo = django_filters.CharFilter(field_name='modelo', lookup_expr='icontains')
+    mac_address = django_filters.CharFilter(field_name='mac_address', lookup_expr='icontains')
+    latitude = django_filters.NumberFilter(field_name='latitude')
+    longitude = django_filters.NumberFilter(field_name='longitude')
+    status = django_filters.BooleanFilter(field_name='status')
+    ambiente = django_filters.CharFilter(field_name='ambiente__descricao', lookup_expr='icontains')
+
+    class Meta:
+        model = Microcontroladores
+        fields = ['modelo', 'mac_address', 'latitude', 'longitude', 'status', 'ambiente']
+
