@@ -1,3 +1,5 @@
+from datetime import timedelta, timezone
+
 from django.shortcuts import render
 from .models import *
 from .serializers import *
@@ -39,18 +41,22 @@ class MicrocontroladoresViewSet(viewsets.ModelViewSet):
     queryset = Microcontroladores.objects.all()
     serializer_class = MicrocontroladoresSerializer
 
+    filter_backends = [DjangoFilterBackend]
     filterset_class = MicrocontroladoresFilter
 
 class SensoresViewSet(viewsets.ModelViewSet):
     queryset = Sensores.objects.all()
     serializer_class = SensoresSerializer
 
+    filter_backends = [DjangoFilterBackend]
     filterset_class = SensoresFilter
 
 class HistoricosViewSet(viewsets.ModelViewSet):
     queryset = Historicos.objects.all()
     serializer_class = HistoricosSerializer
 
+    filter_backends = [DjangoFilterBackend]
     filterset_class = HistoricosFilter
+
 
 

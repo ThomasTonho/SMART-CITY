@@ -7,7 +7,7 @@ class Usuario(models.Model):
     ]
     nome = models.CharField(max_length=100)
     telefone = models.CharField(max_length=20, blank=True, null=True)
-    tipo = models.CharField(choices=TIPO_CHOICES)
+    tipo = models.CharField(max_length=255, choices=TIPO_CHOICES)
 
 class Locais(models.Model):
     nome = models.CharField(max_length=100)
