@@ -19,6 +19,7 @@ class LocaisViewSet(viewsets.ModelViewSet):
 class ResponsaveisViewSet(viewsets.ModelViewSet):
     queryset = Responsaveis.objects.all()
     serializer_class = ResponsaveisSerializer
+    filterset_class = ResponsaveisFilter
 
 class AmbientesViewSet(viewsets.ModelViewSet):
     queryset = Ambientes.objects.all()
