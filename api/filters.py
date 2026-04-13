@@ -55,3 +55,12 @@ class SensoresFilter(django_filters.FilterSet):
     class Meta:
         model = Sensores
         fields = ['tipo_sensor', 'unidade_medida', 'mic', 'status']
+
+class HistoricosFilter(django_filters.FilterSet):
+    sensor = django_filters.CharFilter(field_name='sensor__tipo_sensor', lookup_expr='icontains')
+    valor = django_filters.NumberFilter(field_name='valor')
+    timestamp = django_filters.DateTimeFromToRangeFilter(field_name='timestamp')
+
+    class Meta:
+        model = Historicos
+        fields = ['sensor', 'valor', 'timestamp']
