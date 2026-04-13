@@ -29,8 +29,20 @@ class Microcontroladores(models.Model):
     ambiente = models.ForeignKey(Ambientes, on_delete=models.CASCADE)
 
 class Sensores(models.Model):
-    sensor = models.CharField(max_length=100)
-    unidade_medida = models.CharField(max_length=100)
+    TIPO_CHOICES = [
+        ('TEMPERATURA', 'Temperatura'),
+        ('UMIDADE', 'Umidade'),
+        ('LUMINOSIDADE', 'Luminosidade'),
+        ('PRESENCA', 'Presença')
+    ]
+    UNIDADE_CHOICES = [
+        ('C', 'Celsius'),
+        ('%', 'Porcentagem'),
+        ('LUX', 'Lux'),
+        ('UNI', 'Uni')
+    ]
+    tipo_sensor = models.CharField(choices=TIPO_CHOICES, max_length=100)
+    unidade_medida = models.CharField(choices=UNIDADE_CHOICES, max_length=100)
     mic = models.ForeignKey(Microcontroladores, on_delete=models.CASCADE)
     status = models.BooleanField()
 
