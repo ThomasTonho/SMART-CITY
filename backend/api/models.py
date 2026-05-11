@@ -2,8 +2,8 @@ from django.db import models
 
 class Usuario(models.Model):
     TIPO_CHOICES = [
-        ('ADMIN', 'Admin'),
-        ('USER', 'User')
+        ('ADMIN', 'Administrador'),
+        ('USER', 'Usuario')
     ]
     nome = models.CharField(max_length=100)
     telefone = models.CharField(max_length=20, blank=True, null=True)
@@ -33,7 +33,7 @@ class Sensores(models.Model):
         ('TEMPERATURA', 'Temperatura'),
         ('UMIDADE', 'Umidade'),
         ('LUMINOSIDADE', 'Luminosidade'),
-        ('PRESENCA', 'Presença')
+        ('CONTADOR', 'Contador')
     ]
     UNIDADE_CHOICES = [
         ('C', 'Celsius'),

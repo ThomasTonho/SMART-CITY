@@ -20,6 +20,8 @@ router.register(r'historicos', HistoricosViewSet)
 urlpatterns = [
     path('token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('refresh', TokenRefreshView.as_view(), name='token_refresh'),
+    path('register/', RegisterViewSet.as_view({'post': 'create'}), name='register'),
+    path('importacao/csv/', ImportacaoCSVViewSet.as_view({'post': 'create'}), name='importacao_csv'),
 
     path('', include(router.urls))
 ]
