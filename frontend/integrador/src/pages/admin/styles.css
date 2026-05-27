@@ -272,6 +272,23 @@
   padding-left: 20px;
 }
 
+.listagens-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.listagens-header h2 {
+  margin: 0;
+}
+
+.listagens-header span {
+  color: #334155;
+  font-weight: 600;
+}
+
 @media (max-width: 960px) {
   .admin-page {
     padding: 16px;

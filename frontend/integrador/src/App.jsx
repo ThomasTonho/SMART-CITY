@@ -4,6 +4,7 @@ import RegisterPage from "./pages/register/register";
 import UserHomePage from "./pages/user/home";
 import AdminPage from "./pages/admin/admin";
 import AdminImportCsvPage from "./pages/admin/import-csv";
+import AdminListagensPage from "./pages/admin/listagens";
 import "./App.css";
 
 function ProtectedRoute({ children }) {
@@ -41,6 +42,14 @@ function App() {
         element={
           <ProtectedRoute>
             <AdminImportCsvPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/listagens"
+        element={
+          <ProtectedRoute>
+            <AdminListagensPage />
           </ProtectedRoute>
         }
       />

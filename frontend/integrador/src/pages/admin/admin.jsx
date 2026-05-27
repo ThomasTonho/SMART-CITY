@@ -182,6 +182,13 @@ export default function AdminPage() {
           >
             Importar CSV
           </button>
+          <button
+            type="button"
+            className="filter-button"
+            onClick={() => navigate("/admin/listagens")}
+          >
+            Ver listagens
+          </button>
           <button type="button" className="logout-button" onClick={handleLogout}>
             Sair
           </button>

@@ -44,9 +44,13 @@ export default function Login() {
       });
 
       const access = response.data.access;
+      const refresh = response.data.refresh;
 
-      // Salva o token
+      // Salva os tokens
       localStorage.setItem("token", access);
+      if (refresh) {
+        localStorage.setItem("refreshToken", refresh);
+      }
 
       // 2) Busca os dados do usuário logado
       const me = await axios.get(`${API_BASE_URL}/api/usuarios/me/`, {
@@ -58,6 +62,7 @@ export default function Login() {
       // 3) Se usuário estiver inativo, bloqueia
       if (!is_active) {
         localStorage.removeItem("token");
+        localStorage.removeItem("refreshToken");
         setMessage("Usuário inativo. Contate o administrador.");
         setLoading(false);
         return;
@@ -72,6 +77,7 @@ export default function Login() {
     } catch (error) {
       console.error("Erro no login: ", error);
       localStorage.removeItem("token");
+      localStorage.removeItem("refreshToken");
       
       if (error.response?.status === 401) {
         setMessage("Usuário ou senha inválidos.");
