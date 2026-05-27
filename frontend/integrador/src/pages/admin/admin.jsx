@@ -26,7 +26,7 @@ const SENSOR_TYPES = [
   { label: "Luminosidade", value: "LUMINOSIDADE" },
   { label: "Contador", value: "CONTADOR" },
 ];
-const CHART_COLORS = ["#0284c7", "#0ea5e9", "#22d3ee", "#38bdf8"];
+const CHART_COLORS = ["#1d4ed8", "#0369a1", "#0f766e", "#475569"];
 
 export default function AdminPage() {
   const navigate = useNavigate();
@@ -133,15 +133,15 @@ export default function AdminPage() {
         navigate("/login");
         return;
       }
-      if (error.response?.data?.sensor?.[0]) {
-        setMessage(error.response.data.sensor[0]);
-        return;
-      }
-      setMessage("Falha ao registrar medicao.");
+      const backendMessage =
+        error.response?.data?.error?.details?.sensor?.[0] ||
+        error.response?.data?.error?.message;
+      setMessage(backendMessage || "Falha ao registrar medicao.");
     }
   };
 
   const sensoresInativos = stats.sensoresTotal - stats.sensoresAtivos;
+  const sensoresAtivosDisponiveis = sensores.filter((sensor) => sensor.status);
   const taxaAtivos = stats.sensoresTotal
     ? Math.round((stats.sensoresAtivos / stats.sensoresTotal) * 100)
     : 0;
@@ -239,9 +239,9 @@ export default function AdminPage() {
           <div className="chart-container">
             <ResponsiveContainer width="100%" height={230}>
               <BarChart data={sensoresPorTipo}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                <XAxis dataKey="label" stroke="#475569" />
-                <YAxis allowDecimals={false} stroke="#475569" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#cbd5e1" />
+                <XAxis dataKey="label" stroke="#334155" />
+                <YAxis allowDecimals={false} stroke="#334155" />
                 <Tooltip />
                 <Bar dataKey="total" radius={[8, 8, 0, 0]}>
                   {sensoresPorTipo.map((item, index) => (
@@ -276,8 +276,8 @@ export default function AdminPage() {
                   outerRadius={88}
                   paddingAngle={4}
                 >
-                  <Cell fill="#16a34a" />
-                  <Cell fill="#ef4444" />
+                  <Cell fill="#166534" />
+                  <Cell fill="#b91c1c" />
                 </Pie>
                 <Tooltip />
                 <Legend />
@@ -291,14 +291,14 @@ export default function AdminPage() {
           <div className="chart-container">
             <ResponsiveContainer width="100%" height={250}>
               <LineChart data={historicoPorHora}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                <XAxis dataKey="hora" stroke="#475569" />
-                <YAxis allowDecimals={false} stroke="#475569" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#cbd5e1" />
+                <XAxis dataKey="hora" stroke="#334155" />
+                <YAxis allowDecimals={false} stroke="#334155" />
                 <Tooltip />
                 <Line
                   type="monotone"
                   dataKey="total"
-                  stroke="#0284c7"
+                  stroke="#1d4ed8"
                   strokeWidth={3}
                   dot={{ r: 3 }}
                 />
@@ -365,15 +365,20 @@ export default function AdminPage() {
         <article className="admin-table-card">
           <h2>Nova medicao</h2>
           <form onSubmit={submitMedicao} className="measurement-form">
-            <input
-              type="number"
-              placeholder="ID do sensor"
+            <select
               value={formData.sensor}
               onChange={(event) =>
                 setFormData((prev) => ({ ...prev, sensor: event.target.value }))
               }
               required
-            />
+            >
+              <option value="">Selecione o sensor</option>
+              {sensoresAtivosDisponiveis.map((sensor) => (
+                <option key={sensor.id} value={sensor.id}>
+                  ID {sensor.id} - {sensor.tipo_sensor} ({sensor.unidade_medida})
+                </option>
+              ))}
+            </select>
             <input
               type="number"
               step="0.01"

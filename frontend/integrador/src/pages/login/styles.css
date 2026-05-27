@@ -16,17 +16,17 @@ body {
   justify-content: center;
   align-items: center;
   padding: 24px;
-  background: radial-gradient(circle at top, #1e293b, #0f172a 55%, #0b1220);
-  color: #e2e8f0;
+  background: radial-gradient(circle at top, #1e293b, #0f172a 55%, #020617);
+  color: #f8fafc;
 }
 
 /* Card */
 .loginCard {
   width: 100%;
   max-width: 420px;
-  border: 1px solid #334155;
+  border: 1px solid #475569;
   border-radius: 18px;
-  background: rgba(17, 28, 51, 0.92);
+  background: rgba(15, 23, 42, 0.95);
   box-shadow: 0px 18px 60px rgba(0, 0, 0, 0.45);
   padding: 22px;
 }
@@ -44,7 +44,7 @@ body {
 
 .loginSubtitle {
   margin: 8px 0 0;
-  color: #94a3b8;
+  color: #cbd5e1;
   font-size: 14px;
 }
 
@@ -63,34 +63,34 @@ body {
 
 .label {
   font-size: 13px;
-  color: #cbd5e1;
+  color: #e2e8f0;
 }
 
 .input {
   width: 100%;
   padding: 12px 12px;
   border-radius: 12px;
-  border: 1px solid #334155;
-  background: #0b1220;
-  color: #e2e8f0;
+  border: 1px solid #64748b;
+  background: #0f172a;
+  color: #f8fafc;
   outline: none;
   font-size: 15px;
 }
 
 .input::placeholder {
-  color: #64748b;
+  color: #94a3b8;
 }
 
 .input:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.35);
 }
 
 /* Alert */
 .alert {
-  border: 1px solid rgba(239, 68, 68, 0.35);
-  background: rgba(239, 68, 68, 0.12);
-  color: #fecaca;
+  border: 1px solid #f87171;
+  background: #7f1d1d;
+  color: #fee2e2;
   padding: 10px 12px;
   border-radius: 12px;
   font-size: 13px;
@@ -100,8 +100,8 @@ body {
 .btnPrimary {
   padding: 12px;
   border-radius: 12px;
-  border: 1px solid #4f46e5;
-  background: #6366f1;
+  border: 1px solid #1d4ed8;
+  background: #2563eb;
   color: #ffffff;
   font-size: 15px;
   font-weight: bold;
@@ -125,7 +125,7 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #64748b;
+  color: #cbd5e1;
   font-size: 13px;
   margin: 2px 0;
 }
@@ -135,7 +135,7 @@ body {
   content: "";
   flex: 1;
   height: 1px;
-  background: #334155;
+  background: #64748b;
 }
 
 /* Rodapé do form */
@@ -148,11 +148,11 @@ body {
 .footerText {
   margin: 0;
   font-size: 14px;
-  color: #94a3b8;
+  color: #cbd5e1;
 }
 
 .link {
-  color: #a5b4fc;
+  color: #93c5fd;
   text-decoration: none;
   font-weight: bold;
 }
@@ -165,12 +165,12 @@ body {
 .loginFooter {
   margin-top: 18px;
   padding-top: 14px;
-  border-top: 1px solid #334155;
+  border-top: 1px solid #64748b;
   text-align: center;
   font-size: 12px;
-  color: #94a3b8;
+  color: #cbd5e1;
 }
 
 .loginFooter strong {
-  color: #e2e8f0;
+  color: #f8fafc;
 }

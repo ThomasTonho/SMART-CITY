@@ -3,14 +3,15 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: radial-gradient(circle at top, #1e293b, #0f172a 55%, #020617);
   padding: 20px;
 }
 
 .registerCard {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid #475569;
+  border-radius: 12px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
   width: 100%;
   max-width: 400px;
   padding: 40px;
@@ -24,12 +25,12 @@
 .registerTitle {
   font-size: 28px;
   font-weight: bold;
-  color: #333;
+  color: #f8fafc;
   margin: 0 0 10px 0;
 }
 
 .registerSubtitle {
-  color: #666;
+  color: #cbd5e1;
   margin: 0;
   font-size: 14px;
 }
@@ -49,44 +50,46 @@
 .label {
   font-size: 14px;
   font-weight: 500;
-  color: #333;
+  color: #e2e8f0;
 }
 
 .input {
   padding: 10px 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid #64748b;
+  border-radius: 8px;
   font-size: 14px;
   transition: border-color 0.3s;
+  background: #0f172a;
+  color: #f8fafc;
 }
 
 .input:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.35);
 }
 
 .input:disabled {
-  background-color: #f5f5f5;
+  background-color: #1e293b;
   cursor: not-allowed;
 }
 
 .alert {
   padding: 12px;
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
-  border-radius: 4px;
-  color: #721c24;
+  background-color: #7f1d1d;
+  border: 1px solid #f87171;
+  border-radius: 8px;
+  color: #fee2e2;
   font-size: 14px;
   text-align: center;
 }
 
 .btnPrimary {
   padding: 12px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #2563eb;
   color: white;
-  border: none;
-  border-radius: 4px;
+  border: 1px solid #1d4ed8;
+  border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
@@ -95,7 +98,8 @@
 
 .btnPrimary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  background: #1d4ed8;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
 }
 
 .btnPrimary:disabled {
@@ -107,7 +111,7 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  color: #999;
+  color: #cbd5e1;
   font-size: 14px;
   margin: 10px 0;
 }
@@ -117,7 +121,7 @@
   content: '';
   flex: 1;
   height: 1px;
-  background: #ddd;
+  background: #64748b;
 }
 
 .footerActions {
@@ -127,11 +131,11 @@
 .footerText {
   margin: 0;
   font-size: 14px;
-  color: #666;
+  color: #cbd5e1;
 }
 
 .link {
-  color: #667eea;
+  color: #93c5fd;
   text-decoration: none;
   font-weight: 600;
   cursor: pointer;
@@ -145,7 +149,7 @@
   text-align: center;
   margin-top: 30px;
   padding-top: 20px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #64748b;
   font-size: 12px;
-  color: #999;
+  color: #cbd5e1;
 }

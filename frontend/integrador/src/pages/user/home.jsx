@@ -55,8 +55,8 @@ export default function UserHomePage() {
   }, [navigate, selectedType, token]);
 
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Home - Usuario</h1>
+    <div style={{ padding: 20, minHeight: "100vh", backgroundColor: "#f1f5f9", color: "#0f172a" }}>
+      <h1 style={{ color: "#000000" }}>Home - Usuario</h1>
       <p>Selecione um tipo de sensor para visualizar os dados.</p>
       <div style={{ display: "flex", gap: 8, marginBottom: 16, flexWrap: "wrap" }}>
         {SENSOR_TYPES.map((item) => (
@@ -66,8 +66,8 @@ export default function UserHomePage() {
             onClick={() => setSelectedType(item.value)}
             style={{
               padding: "8px 12px",
-              border: "1px solid #ccc",
-              backgroundColor: selectedType === item.value ? "#0369a1" : "#f8fafc",
+              border: "1px solid #94a3b8",
+              backgroundColor: selectedType === item.value ? "#1d4ed8" : "#ffffff",
               color: selectedType === item.value ? "#fff" : "#0f172a",
               borderRadius: 4,
               cursor: "pointer",
@@ -78,7 +78,7 @@ export default function UserHomePage() {
         ))}
       </div>
 
-      {message && <p style={{ color: "#dc2626" }}>{message}</p>}
+      {message && <p style={{ color: "#991b1b" }}>{message}</p>}
 
       <h2>Sensores ({selectedType})</h2>
       <table border="1" cellPadding="8" cellSpacing="0" width="100%">
@@ -143,7 +143,7 @@ export default function UserHomePage() {
         style={{
           marginTop: 20,
           padding: "10px 20px",
-          backgroundColor: "#dc2626",
+          backgroundColor: "#b91c1c",
           color: "#fff",
           border: "none",
           borderRadius: 4,
