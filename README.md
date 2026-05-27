@@ -1,10 +1,10 @@
+# PROJETO INTEGRADOR - SMART CITY
+
+É uma plataforma web de gestão e observabilidade de sensores IoT, com controle de acesso por perfil, API segura via JWT e interface React para operação diária e análise rápida de dados
+
 <p align="center">
   <img src="docs/download.jpg" alt="INTEGRADOR" width="600">
 </p>
-
-# INTEGRADOR
-
-Projeto full stack com backend em Django REST Framework e frontend em React + Vite.
 
 ## Estrutura do projeto
 
