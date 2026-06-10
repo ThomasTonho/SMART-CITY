@@ -1,144 +1,162 @@
-# PROJETO INTEGRADOR - SMART CITY
+# SMART CITY — Plataforma IoT
 
-É uma plataforma web de gestão e observabilidade de sensores IoT, com controle de acesso por perfil, API segura via JWT e interface React para operação diária e análise rápida de dados
+Plataforma web de gestão e monitoramento de sensores IoT com controle de acesso por perfil, API segura via JWT e interface React para operação e análise de dados em tempo real.
+
+![Python](https://img.shields.io/badge/Python-3.12+-3776AB?style=flat&logo=python&logoColor=white)
+![Django](https://img.shields.io/badge/Django-REST_Framework-092E20?style=flat&logo=django&logoColor=white)
+![React](https://img.shields.io/badge/React-Vite-61DAFB?style=flat&logo=react&logoColor=black)
+![MySQL](https://img.shields.io/badge/MySQL-8.0+-4479A1?style=flat&logo=mysql&logoColor=white)
+![JWT](https://img.shields.io/badge/Auth-JWT-000000?style=flat&logo=jsonwebtokens&logoColor=white)
+
+---
+
+## Funcionalidades
+
+- Cadastro e autenticação de usuários com perfis **Admin** e **Usuário**
+- Gerenciamento de locais, ambientes e responsáveis
+- Cadastro de microcontroladores com geolocalização (latitude/longitude)
+- Cadastro de sensores por tipo: Temperatura, Umidade, Luminosidade e Contador
+- Histórico de leituras por sensor com timestamp automático
+- Importação de dados via CSV
+- API RESTful protegida com JWT (access + refresh token)
+- Interface React separada por perfil de acesso
+
+---
 
 ## Estrutura do projeto
 
 ```
-INTEGRADOR/                    ← raiz do repositório
-├── docs/                      ← imagens do README (ex.: download.jpg)
-├── backend/                   ← API Django (manage.py fica aqui)
+SMART-CITY/
+├── backend/                   ← API Django
 │   ├── manage.py
-│   ├── requirements.txt       ← dependências Python do backend
-│   ├── api/
-│   └── smartcity/
+│   ├── requirements.txt
+│   ├── api/                   ← models, views, serializers, filtros
+│   └── smartcity/             ← settings, urls, wsgi
 └── frontend/
-    └── integrador/            ← app React (package.json fica aqui)
+    └── integrador/            ← app React + Vite
         ├── package.json
         └── src/
+            └── pages/         ← admin/, login/, register/, user/
 ```
 
-## Onde entrar para rodar
+---
 
-Abra **dois terminais**. Em ambos, comece na pasta raiz do projeto (`INTEGRADOR`).
+## Pré-requisitos
 
-| O que fazer | Pasta em que você deve estar | Arquivo de referência |
-|-------------|------------------------------|------------------------|
-| Backend (venv, pip, requirements, migrate, runserver) | `INTEGRADOR/backend` | `manage.py`, `requirements.txt` |
-| Frontend (npm install, npm run dev) | `INTEGRADOR/frontend/integrador` | `package.json` |
+| Componente | Versão mínima |
+|------------|--------------|
+| Python | 3.12+ |
+| Node.js | 18+ |
+| MySQL | 8.0+ |
 
-### Caminhos no Windows (PowerShell)
+---
 
-Se o projeto está na Área de Trabalho:
+## Como rodar
 
-```powershell
-# Raiz do projeto
-cd C:\Users\52741832803\Desktop\INTEGRADOR
+Abra **dois terminais** a partir da raiz do projeto.
 
-# Terminal 1 — backend
-cd backend
+### 1. Banco de dados
 
-# Terminal 2 — frontend (a partir da raiz)
-cd frontend\integrador
-```
-
-> Todos os comandos `python manage.py ...` devem ser executados **dentro de `backend/`**.  
-> Todos os comandos `npm ...` devem ser executados **dentro de `frontend/integrador/`**.
-
-## Requisitos
-
-### Backend
-
-- Python 3.12+ (recomendado)
-- Dependências listadas em `backend/requirements.txt` (instalar com `pip install -r requirements.txt`)
-- MySQL rodando localmente
-- Banco configurado em `backend/smartcity/settings.py`:
-  - `NAME=smart`
-  - `USER=root`
-  - `PASSWORD=root`
-  - `HOST=localhost`
-  - `PORT=3306`
-
-Crie o banco no MySQL antes de rodar as migrações, se ainda não existir:
+Crie o banco no MySQL antes de subir o backend:
 
 ```sql
 CREATE DATABASE smart CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-### Frontend
+### 2. Terminal 1 — Backend
 
-- Node.js 18+ (recomendado)
-- npm
+```bash
+cd backend
 
-## Como rodar o projeto
-
-### Terminal 1 — Backend (pasta `backend/`)
-
-```powershell
-cd C:\Users\52741832803\Desktop\INTEGRADOR\backend
-```
-
-Crie e ative o ambiente virtual (ainda em `backend/`):
-
-```powershell
+# Crie e ative o ambiente virtual
 python -m venv .venv
+
+# Linux/macOS
+source .venv/bin/activate
+
+# Windows (PowerShell)
 .venv\Scripts\Activate.ps1
-```
 
-Instale as dependências do backend a partir do `requirements.txt` (ainda em `backend/`):
-
-```powershell
+# Instale as dependências
 pip install -r requirements.txt
-```
 
-> É obrigatório instalar o `requirements.txt` antes de rodar `migrate` ou `runserver`. Sem isso, o Django e as bibliotecas da API não estarão disponíveis.
-
-Aplique as migrações (ainda em `backend/`):
-
-```powershell
+# Aplique as migrações
 python manage.py migrate
-```
 
-Suba o servidor (ainda em `backend/`):
-
-```powershell
+# Suba o servidor
 python manage.py runserver
 ```
 
 - API: `http://127.0.0.1:8000/api/`
 - Admin Django: `http://127.0.0.1:8000/admin/`
 
-### Terminal 2 — Frontend (pasta `frontend/integrador/`)
+### 3. Terminal 2 — Frontend
 
-```powershell
-cd C:\Users\52741832803\Desktop\INTEGRADOR\frontend\integrador
-```
+```bash
+cd frontend/integrador
 
-Instale as dependências (ainda em `frontend/integrador/`):
-
-```powershell
 npm install
-```
-
-Inicie o app (ainda em `frontend/integrador/`):
-
-```powershell
 npm run dev
 ```
 
 - Interface: `http://127.0.0.1:5173`
 
-O frontend usa a API em `http://127.0.0.1:8000` por padrão. Para outra URL, crie um arquivo `.env` em `frontend/integrador/`:
+---
+
+## Variáveis de ambiente
+
+Por padrão o frontend aponta para `http://127.0.0.1:8000`. Para alterar, crie um `.env` em `frontend/integrador/`:
 
 ```env
 VITE_API_URL=http://127.0.0.1:8000
 ```
 
-## Scripts úteis (sempre em `frontend/integrador/`)
+---
 
-```powershell
-cd C:\Users\52741832803\Desktop\INTEGRADOR\frontend\integrador
+## Endpoints da API
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| POST | `/api/token` | Obter access + refresh token |
+| POST | `/api/refresh` | Renovar access token |
+| POST | `/api/register/` | Cadastrar novo usuário |
+| POST | `/api/importacao/csv/` | Importar dados via CSV |
+| CRUD | `/api/usuarios/` | Gerenciar usuários |
+| CRUD | `/api/locais/` | Gerenciar locais |
+| CRUD | `/api/responsaveis/` | Gerenciar responsáveis |
+| CRUD | `/api/ambientes/` | Gerenciar ambientes |
+| CRUD | `/api/microcontroladores/` | Gerenciar microcontroladores |
+| CRUD | `/api/sensores/` | Gerenciar sensores |
+| CRUD | `/api/historicos/` | Consultar histórico de leituras |
+
+> Todos os endpoints (exceto `/token`, `/refresh` e `/register/`) exigem autenticação via `Authorization: Bearer <token>`.
+
+---
+
+## Configuração do banco (desenvolvimento)
+
+As configurações padrão em `backend/smartcity/settings.py`:
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'smart',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
 ```
+
+Altere conforme seu ambiente local.
+
+---
+
+## Scripts úteis (frontend)
+
+Execute a partir de `frontend/integrador/`:
 
 | Comando | Descrição |
 |---------|-----------|
@@ -147,16 +165,13 @@ cd C:\Users\52741832803\Desktop\INTEGRADOR\frontend\integrador
 | `npm run preview` | Pré-visualiza o build |
 | `npm run lint` | Executa o ESLint |
 
-## Ordem recomendada
+---
 
-1. Subir o MySQL e garantir o banco `smart`.
-2. **Terminal 1:** entrar em `backend/` → ativar venv → `pip install -r requirements.txt` → `migrate` → `runserver`.
-3. **Terminal 2:** entrar em `frontend/integrador/` → `npm install` → `npm run dev`.
-4. Acessar `http://127.0.0.1:5173` no navegador.
+## Solução de problemas
 
-## Observações
-
-- O backend aceita requisições do frontend em `localhost:5173` (CORS configurado em `backend/smartcity/settings.py`).
-- Erro de conexão com o banco: confira se o MySQL está ativo e se usuário/senha/nome do banco batem com o `settings.py`.
-- Erro `manage.py not found`: você não está na pasta `backend/`.
-- Erro `package.json not found`: você não está na pasta `frontend/integrador/`.
+| Erro | Causa provável |
+|------|---------------|
+| `manage.py not found` | Você não está dentro de `backend/` |
+| `package.json not found` | Você não está dentro de `frontend/integrador/` |
+| Erro de conexão com banco | MySQL não está ativo ou as credenciais não batem com o `settings.py` |
+| `ModuleNotFoundError` | `pip install -r requirements.txt` não foi executado |
