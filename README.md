@@ -2,10 +2,6 @@
 
 É uma plataforma web de gestão e observabilidade de sensores IoT, com controle de acesso por perfil, API segura via JWT e interface React para operação diária e análise rápida de dados
 
-<p align="center">
-  <img src="docs/download.jpg" alt="INTEGRADOR" width="600">
-</p>
-
 ## Estrutura do projeto
 
 ```
