@@ -1,4 +1,4 @@
-# SMART CITY — Plataforma IoT
+# SMART CITY
 
 Plataforma web de gestão e monitoramento de sensores IoT com controle de acesso por perfil, API segura via JWT e interface React para operação e análise de dados em tempo real.
 
