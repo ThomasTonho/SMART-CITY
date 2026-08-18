@@ -175,3 +175,4 @@ Execute a partir de `frontend/integrador/`:
 | `package.json not found` | Você não está dentro de `frontend/integrador/` |
 | Erro de conexão com banco | MySQL não está ativo ou as credenciais não batem com o `settings.py` |
 | `ModuleNotFoundError` | `pip install -r requirements.txt` não foi executado |
+...
